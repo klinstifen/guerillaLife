@@ -157,8 +157,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
 
             #clear screen
             #gd.clear()
-            logger.info('---------')
-            logger.info("Tick:",tick)
+            logger.info(" --------- Tick: %s ---------", tick)
             for r in generationX:
                 row = ""
                 for c in r:
@@ -167,7 +166,6 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     if c == 1:
                         row = row + "*"
                 logger.info(row)
-            logger.info('---------')
             #sleep(0.5)
             tick += 1
             for x in range (0,xsize):
@@ -187,7 +185,9 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     cause = "Frozen"
                 elif blinking:
                     cause = "Blinking"
-                logger.info("Total Generations: %s || Termination Cause: %s", tick, cause)
+                logger.info(" -----")
+                logger.info(" Total Generations: %s || Termination Cause: %s", tick, cause)
+                logger.info(" -----")
 
 
 gd = guerillaDisplay()
