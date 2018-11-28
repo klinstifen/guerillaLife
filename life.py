@@ -204,6 +204,6 @@ def runLife(xsize, ysize, sprinkle, seed = None):
 gd = guerillaDisplay()
 gd.initiate()
 
-while TRUE:
+while True:
     runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
     time.sleep(0.5)
