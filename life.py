@@ -177,5 +177,5 @@ def runLife(xsize, ysize, sprinkle, seed = None):
 
 GCD = guerillaClockDisplay()
 GCD.initiate()
-
+GCD.oneDot()
 runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
