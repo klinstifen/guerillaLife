@@ -147,6 +147,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                             GCD.cellOn(x,y)
 
             #clear screen
+            GCD.clear()
             print "tick:",tick
             for r in generationX:
                 for c in r:
