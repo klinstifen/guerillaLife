@@ -141,12 +141,12 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     #live
                     if generationX[y][x] == 1 and (neighbors == 2 or neighbors == 3):
                         generationY[y][x] = 1
-                        GCD.cellOn(x,y)
+                        GCD.cellOn(x,y,128)
                     #birth
                     if generationX[y][x] == 0:
                         if neighbors == 3:
                             generationY[y][x] = 1
-                            GCD.cellOn(x,y)
+                            GCD.cellOn(x,y,128)
 
             #clear screen
             #GCD.clear()
