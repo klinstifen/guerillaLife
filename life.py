@@ -106,12 +106,13 @@ def getNeighbors(generation, x, y):
 
 def runLife(xsize, ysize, sprinkle, seed = None):
     #build grid
-    gridRow, generationW, generationX, generationY, theseed = ([] for i in range(5))
+    gridRow, generationV, generationW, generationX, generationY, theseed = ([] for i in range(5))
     for x in range(0,xsize):
         gridRow.append(0)
     for y in range(0,ysize):
         theseed.append(copy.deepcopy(gridRow))
 
+    generationV = copy.deepcopy(theseed)
     generationW = copy.deepcopy(theseed)
     generationX = copy.deepcopy(theseed)
     generationY = copy.deepcopy(theseed)
@@ -144,6 +145,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             imalive = 0
             frozen = 1
             blinking = 1
+            pulsar = 1
             for x in range(0,xsize):
                 for y in range(0,ysize):
                     if generationX[y][x] == 1:
@@ -181,6 +183,8 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             tick += 1
             for x in range (0,xsize):
                 for y in range(0,ysize):
+                    if generationW[y][x] != generationX[y][x]:
+                        pulsar = 0
                     if generationW[y][x] != generationY[y][x]:
                         blinking = 0
                     if generationX[y][x] != generationY[y][x]:
@@ -188,7 +192,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             generationW = copy.deepcopy(generationX)
             generationX = copy.deepcopy(generationY)
 
-            if not imalive or frozen or blinking:
+            if not imalive or frozen or blinking or pulsar:
                 dead = 1
                 if not imalive:
                     cause = "Death"
@@ -196,6 +200,8 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     cause = "Frozen"
                 elif blinking:
                     cause = "Blinking"
+                elif pulsar:
+                    cause = "Pulsar"
                 logger.info(" -----")
                 logger.info(" Total Generations: %s || Termination Cause: %s", tick, cause)
                 logger.info(" -----")
