@@ -12,6 +12,11 @@ import os
 # AnextY live cell with more than three live neighbors dies, as if by overpopulation.
 # AnextY dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
+#LBO shutdown PIN
+PIN = 21
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
 #Config logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
