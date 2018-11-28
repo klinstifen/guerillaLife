@@ -26,7 +26,7 @@ class guerillaClockDisplay(object):
     def oneDot(self):
         pos = 3 #align left
         self.msg = "."
-        graphics.SetPixel(10,10,255,0,0)
+        self.matrix.SetPixel(10,10,255,0,0)
         #graphics.DrawText(self.offscreen_canvas, self.font, pos, 10, self.textColor, self.msg)
         self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
 

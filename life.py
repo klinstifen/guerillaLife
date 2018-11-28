@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import sys, random, copy
 from time import sleep
-from rgbmatrix import *
+from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 from guerillaClockDisplay import *
 
 # AnextY live cell with fewer than two live neighbors dies, as if by underpopulation.
