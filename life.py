@@ -199,6 +199,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                 logger.info(" -----")
                 logger.info(" Total Generations: %s || Termination Cause: %s", tick, cause)
                 logger.info(" -----")
+                gd.clear()
 
 
 gd = guerillaDisplay()
