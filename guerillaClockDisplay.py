@@ -23,6 +23,10 @@ class guerillaClockDisplay(object):
     def set(self, m):
         self.msg = m
 
+    def oneDot(self):
+        self.msg = "."
+        graphics.DrawText(self.offscreen_canvas, self.font, pos, 10, self.textColor, self.msg)
+
     def show(self, b, t):
         self.bus = b + ":"
         self.btime = t

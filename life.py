@@ -176,7 +176,6 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                 print "Total Generations: ",tick," || Termination Cause: ",cause
 
 GCD = guerillaClockDisplay()
-logger.info('Initiating GCD...')
 GCD.initiate()
 
 runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
