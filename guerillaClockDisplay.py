@@ -24,6 +24,7 @@ class guerillaClockDisplay(object):
         self.msg = m
 
     def oneDot(self):
+        pos = 3 #align left
         self.msg = "."
         graphics.DrawText(self.offscreen_canvas, self.font, pos, 10, self.textColor, self.msg)
 
