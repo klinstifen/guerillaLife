@@ -4,6 +4,8 @@ from time import sleep
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 from guerillaDisplay import *
 import logging
+import RPi.GPIO as GPIO
+import os
 
 # AnextY live cell with fewer than two live neighbors dies, as if by underpopulation.
 # AnextY live cell with two or three live neighbors lives on to the next generation.
@@ -214,3 +216,10 @@ gd.initiate()
 while True:
     runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
     time.sleep(0.5)
+
+    #Check for low power
+    logger.info('LBO Status: %s',GPIO.input(PIN))
+    if not GPIO.input(PIN):
+      logger.warning("Low Battery Power Detected.  Shutting down...")
+      GCD.off()
+      os.system("sudo shutdown --poweroff")
