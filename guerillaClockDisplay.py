@@ -29,6 +29,8 @@ class guerillaClockDisplay(object):
         self.matrix.SetPixel(x,y,255,0,0)
         #graphics.DrawText(self.offscreen_canvas, self.font, pos, 10, self.textColor, self.msg)
         #self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
+    def clear(self:
+        self.matrix.clear()
 
     def show(self, b, t):
         self.bus = b + ":"
