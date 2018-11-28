@@ -2,12 +2,24 @@
 import sys, random, copy
 from time import sleep
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
-from guerillaClockDisplay import *
+from guerillaDisplay import *
+import logging
 
 # AnextY live cell with fewer than two live neighbors dies, as if by underpopulation.
 # AnextY live cell with two or three live neighbors lives on to the next generation.
 # AnextY live cell with more than three live neighbors dies, as if by overpopulation.
 # AnextY dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+#Config logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('--%(levelname)s--%(message)s')
+#file handler
+fileHandler = logging.FileHandler('guerillaLife.log')
+fileHandler.setFormatter(formatter)
+logger.addHandler(fileHandler)
+#Disable requests logging unless 'warning'
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 def getNeighbors(generation, x, y):
     upperX = len(generation[0])-1
@@ -114,12 +126,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             for x in range(0,sprinkle):
                 ranCell = random.randint(0,xsize-1)
                 generationX[y][ranCell] = theseed[y][ranCell] = 1
-        """
-        for r in generationX:
-            for c in r:
-                print c,
-            print ""
-        """
+
         tick = 1
         dead = 0
         while not dead:
@@ -134,31 +141,33 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     #die
                     if generationX[y][x] == 1 and neighbors < 2:
                         generationY[y][x] = 0
-                        GCD.cellOff(x,y)
+                        gd.cellOff(x,y)
                     if generationX[y][x] == 1 and neighbors > 3:
                         generationY[y][x] = 0
-                        GCD.cellOff(x,y)
+                        gd.cellOff(x,y)
                     #live
                     if generationX[y][x] == 1 and (neighbors == 2 or neighbors == 3):
                         generationY[y][x] = 1
-                        GCD.cellOn(x,y,128)
+                        gd.cellOn(x,y,128)
                     #birth
                     if generationX[y][x] == 0:
                         if neighbors == 3:
                             generationY[y][x] = 1
-                            GCD.cellOn(x,y,128)
+                            gd.cellOn(x,y,128)
 
             #clear screen
-            #GCD.clear()
-            print "tick:",tick
+            #gd.clear()
+            logger.info('---------')
+            logger.info("Tick:",tick)
             for r in generationX:
+                row = ""
                 for c in r:
                     if c == 0:
-                        print " ",
+                        row = row + " "
                     if c == 1:
-                        print "*",
-                print ""
-
+                        row = row + "*"
+                logger.info(row)
+            logger.info('---------')
             #sleep(0.5)
             tick += 1
             for x in range (0,xsize):
@@ -178,9 +187,10 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     cause = "Frozen"
                 elif blinking:
                     cause = "Blinking"
-                print "Total Generations: ",tick," || Termination Cause: ",cause
+                logger.info("Total Generations: %s || Termination Cause: %s", tick, cause)
 
-GCD = guerillaClockDisplay()
-GCD.initiate()
-#GCD.oneDot()
+
+gd = guerillaDisplay()
+gd.initiate()
+
 runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
