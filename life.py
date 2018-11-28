@@ -157,7 +157,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                         print "*",
                 print ""
 
-            sleep(0.5)
+            #sleep(0.5)
             tick += 1
             for x in range (0,xsize):
                 for y in range(0,ysize):
