@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
+from rgbmatrix import *
 import time
 
 class guerillaClockDisplay(object):
