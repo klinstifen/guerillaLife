@@ -106,7 +106,7 @@ def getNeighbors(generation, x, y):
 
 def runLife(xsize, ysize, sprinkle, seed = None):
     #build grid
-    gridRow, generationV, generationW, generationX, generationY, theseed = ([] for i in range(5))
+    gridRow, generationV, generationW, generationX, generationY, theseed = ([] for i in range(6))
     for x in range(0,xsize):
         gridRow.append(0)
     for y in range(0,ysize):
