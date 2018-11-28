@@ -134,8 +134,10 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     #die
                     if generationX[y][x] == 1 and neighbors < 2:
                         generationY[y][x] = 0
+                        GCD.cellOff(x,y)
                     if generationX[y][x] == 1 and neighbors > 3:
                         generationY[y][x] = 0
+                        GCD.cellOff(x,y)
                     #live
                     if generationX[y][x] == 1 and (neighbors == 2 or neighbors == 3):
                         generationY[y][x] = 1
