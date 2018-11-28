@@ -127,6 +127,17 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                 ranCell = random.randint(0,xsize-1)
                 generationX[y][ranCell] = theseed[y][ranCell] = 1
 
+        #record the seed
+        logger.info(" --------- THE SEED ---------")
+        for r in generationX:
+            row = ""
+            for c in r:
+                if c == 0:
+                    row = row + " "
+                if c == 1:
+                    row = row + "*"
+            logger.info(row)
+
         tick = 1
         dead = 0
         while not dead:
