@@ -177,7 +177,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     if c == 1:
                         row = row + "*"
                 logger.info(row)
-            #sleep(0.5)
+
             tick += 1
             for x in range (0,xsize):
                 for y in range(0,ysize):
@@ -204,4 +204,6 @@ def runLife(xsize, ysize, sprinkle, seed = None):
 gd = guerillaDisplay()
 gd.initiate()
 
-runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
+while true:
+    runLife(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]))
+    time.sleep(0.5)
