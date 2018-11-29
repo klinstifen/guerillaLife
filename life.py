@@ -190,7 +190,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             tick += 1
             for x in range (0,xsize):
                 for y in range(0,ysize):
-                    if generationV[y][x] != generationX[y][x]:
+                    if generationV[y][x] != generationY[y][x]:
                         pulsar = 0
                     if generationW[y][x] != generationY[y][x]:
                         blinking = 0
