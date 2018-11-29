@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
-import time
 
 class guerillaDisplay(object):
     def __init__(self):
@@ -19,10 +18,10 @@ class guerillaDisplay(object):
     def set(self, m):
         self.msg = m
 
-    def cellOn(self,x,y,b):
+    def cellOn(self,x,y,r,g,b):
         pos = 3 #align left
         #self.msg = "."
-        self.matrix.SetPixel(x,y,b,0,0)
+        self.matrix.SetPixel(x,y,r,g,b)
         #graphics.DrawText(self.offscreen_canvas, self.font, pos, 10, self.textColor, self.msg)
         #self.offscreen_canvas = self.matrix.SwapOnVSync(self.offscreen_canvas)
 

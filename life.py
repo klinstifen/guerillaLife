@@ -112,6 +112,10 @@ def getNeighbors(generation, x, y):
     return neighborCount
 
 def runLife(xsize, ysize, sprinkle, seed = None):
+    #randomize Color
+    r = random.randint(128,255)
+    g = random.randint(128,255)
+    b = random.randint(128,255)
     #build grid
     gridRow, trackPulsar, trackBlinker, generationX, generationY, theseed = ([] for i in range(6))
     for x in range(0,xsize):
@@ -168,12 +172,12 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     #live
                     if generationX[y][x] == 1 and (neighbors == 2 or neighbors == 3):
                         generationY[y][x] = 1
-                        gd.cellOn(x,y,128)
+                        gd.cellOn(x,y,r,g,b)
                     #birth
                     if generationX[y][x] == 0:
                         if neighbors == 3:
                             generationY[y][x] = 1
-                            gd.cellOn(x,y,128)
+                            gd.cellOn(x,y,r,g,b)
 
             #clear screen
             #gd.clear()
