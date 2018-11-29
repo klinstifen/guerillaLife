@@ -5,7 +5,7 @@ class guerillaDisplay(object):
     def __init__(self):
         self.options = RGBMatrixOptions()
         self.options.rows = 16
-        self.options.pwm_bits = 1
+        self.options.pwm_bits = 11
         self.options.pwm_lsb_nanoseconds = 200
         self.options.chain_length = 1
         self.options.parallel = 1
