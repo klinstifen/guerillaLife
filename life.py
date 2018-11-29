@@ -114,8 +114,8 @@ def getNeighbors(generation, x, y):
 def runLife(xsize, ysize, sprinkle, seed = None):
     #randomize Color
     cellR = random.randint(0,128)
-    cellG = random.randint(0,128)
-    cellB = random.randint(0,128)
+    cellG = 0 #random.randint(0,128)
+    cellB = 0 #random.randint(0,128)
     logger.info(" colors: %s, %s, %s",cellR,cellG,cellB)
     #build grid
     gridRow, trackPulsar, trackBlinker, generationX, generationY, theseed = ([] for i in range(6))
