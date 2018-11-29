@@ -6,7 +6,7 @@ class guerillaDisplay(object):
         self.options = RGBMatrixOptions()
         self.options.rows = 16
         self.options.pwm_bits = 11
-        self.options.pwm_lsb_nanoseconds = 200
+        self.options.pwm_lsb_nanoseconds = 220
         self.options.chain_length = 1
         self.options.parallel = 1
         self.options.hardware_mapping = 'regular'  # If you have an Adafruit HAT: 'adafruit-hat'
