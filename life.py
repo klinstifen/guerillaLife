@@ -116,6 +116,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
     r = random.randint(128,255)
     g = random.randint(128,255)
     b = random.randint(128,255)
+    logger.info(" colors: %s, %s, %s",r,g,b)
     #build grid
     gridRow, trackPulsar, trackBlinker, generationX, generationY, theseed = ([] for i in range(6))
     for x in range(0,xsize):
