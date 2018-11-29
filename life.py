@@ -113,14 +113,14 @@ def getNeighbors(generation, x, y):
 
 def runLife(xsize, ysize, sprinkle, seed = None):
     #build grid
-    gridRow, generationV, generationW, generationX, generationY, theseed = ([] for i in range(6))
+    gridRow, trackPulsar, trackBlinker, generationX, generationY, theseed = ([] for i in range(6))
     for x in range(0,xsize):
         gridRow.append(0)
     for y in range(0,ysize):
         theseed.append(copy.deepcopy(gridRow))
 
-    generationV = copy.deepcopy(theseed)
-    generationW = copy.deepcopy(theseed)
+    trackPulsar = copy.deepcopy(theseed)
+    trackBlinker = copy.deepcopy(theseed)
     generationX = copy.deepcopy(theseed)
     generationY = copy.deepcopy(theseed)
 
@@ -177,6 +177,8 @@ def runLife(xsize, ysize, sprinkle, seed = None):
 
             #clear screen
             #gd.clear()
+
+            #show current tick
             logger.info(" --------- Tick: %s ---------", tick)
             for r in generationX:
                 row = ""
@@ -186,18 +188,21 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                     if c == 1:
                         row = row + "*"
                 logger.info(row)
-
+            #computer next tick
             tick += 1
             for x in range (0,xsize):
                 for y in range(0,ysize):
-                    if generationV[y][x] != generationY[y][x]:
+                    if trackPulsar[y][x] != generationY[y][x]:
                         pulsar = 0
-                    if generationW[y][x] != generationY[y][x]:
+                    if trackBlinker[y][x] != generationY[y][x]:
                         blinking = 0
                     if generationX[y][x] != generationY[y][x]:
                         frozen = 0
-            generationV = copy.deepcopy(generationX)
-            generationW = copy.deepcopy(generationX)
+            #watch for blinkers/pulsars
+            if(not tick % 7):
+                trackPulsar = copy.deepcopy(generationX)
+            if(not tick % 3):
+                trackBlinker = copy.deepcopy(generationX)
             generationX = copy.deepcopy(generationY)
 
             if not imalive or frozen or blinking or pulsar:
