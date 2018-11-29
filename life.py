@@ -196,6 +196,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                         blinking = 0
                     if generationX[y][x] != generationY[y][x]:
                         frozen = 0
+            generationV = copy.deepcopy(generationX)
             generationW = copy.deepcopy(generationX)
             generationX = copy.deepcopy(generationY)
 
