@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import sys, random, copy
-from time import sleep
+import time
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 from guerillaDisplay import *
 import logging
