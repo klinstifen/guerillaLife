@@ -19,9 +19,9 @@ class guerillaDisplay(object):
         self.msg = m
 
     def cellOn(self,x,y,r,g,b):
-        self.r = r
-        self.g = g
-        self.b = b
+        self.r = int(r)
+        self.g = int(g)
+        self.b = int(b)
         self.matrix.SetPixel(x,y,self.r,self.g,self.b)
 
     def cellOff(self,x,y):
