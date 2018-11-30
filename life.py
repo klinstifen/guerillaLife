@@ -186,7 +186,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
             #gd.clear()
 
             #show current tick
-            logger.info(" --------- Tick: %s ---------", tick)
+            logger.debug(" --------- Tick: %s ---------", tick)
             for r in generationX:
                 row = ""
                 for c in r:
@@ -194,7 +194,7 @@ def runLife(xsize, ysize, sprinkle, seed = None):
                         row = row + " "
                     if c == 1:
                         row = row + "*"
-                logger.info(row)
+                logger.debug(row)
             #computer next tick
             tick += 1
             for x in range (0,xsize):
@@ -236,7 +236,7 @@ while True:
     time.sleep(0.5)
 
     #Check for low power
-    logger.info('LBO Status: %s',GPIO.input(PIN))
+    logger.debug('LBO Status: %s',GPIO.input(PIN))
     if not GPIO.input(PIN):
       logger.warning("Low Battery Power Detected.  Shutting down...")
       GCD.off()
